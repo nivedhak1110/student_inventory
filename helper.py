@@ -71,6 +71,12 @@ def create_students_details_table():
 # register student details
 def register_student_details():
     try:
+        
+        mydb = mysql.connector.connect(
+            host='mysql',
+            user='root',
+            passwd= 'mypassword'
+            )
         student_name = input('enter student name:')
         print(student_name)
         print(type(student_name))
@@ -81,11 +87,7 @@ def register_student_details():
         year = input('enter year :')
         print(year)
 
-        mydb = mysql.connector.connect(
-            host='mysql',
-            user='root',
-            passwd= 'mypassword'
-            )
+        
         mycursor = mydb.cursor()
         mycursor.execute('USE student')
         sql = "INSERT into student_details values(%s,%s,%s,%s)"
