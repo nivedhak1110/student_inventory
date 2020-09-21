@@ -69,29 +69,18 @@ def create_students_details_table():
 
 
 # register student details
-def register_student_details():
+def register_student_details(student_name,roll_no,dept,year):
     try:
-        
+
         mydb = mysql.connector.connect(
             host='mysql',
             user='root',
-            passwd= 'mypassword'
+            passwd='mypassword'
             )
-        student_name = input('enter student name:')
-        print(student_name)
-        print(type(student_name))
-        roll_number = input('enter student roll number:')
-        print(roll_number)
-        dept = input('enter student dept:')
-        print(dept)
-        year = input('enter year :')
-        print(year)
-
-        
         mycursor = mydb.cursor()
         mycursor.execute('USE student')
         sql = "INSERT into student_details values(%s,%s,%s,%s)"
-        val = (student_name,roll_number,dept,year)
+        val = (student_name,roll_no,dept,year)
         mycursor.execute(sql,val)
         mydb.commit()
         return "student details register successfull"
@@ -120,7 +109,7 @@ def get_all_student_details():
 
 
 # method to delete all student details
-def delete_all_student_details():
+def delete_all_student_details(delete_rollnumber):
     try:
         mydb=mysql.connector.connect(
             host='mysql',
@@ -129,7 +118,7 @@ def delete_all_student_details():
             )
         mycursor=mydb.cursor()
         mycursor.execute("USE student")
-        delete_rollnumber = input("enter the roll number of the student you want to delete :")
+
         sql = "DELETE  from student_details where student_roll_number = '{delete_rollnumber}' ".format(delete_rollnumber = delete_rollnumber)
         print(sql)
         mycursor.execute(sql)
@@ -162,7 +151,7 @@ def get_student_details_by_roll(rollno):
 
 
 # method to update student details by roll number
-def update_student_details_by_roll(rollno):
+def update_student_details_by_roll(rollno,update_column,update):
     try:
         mydb = mysql.connector.connect(
             host='mysql',
@@ -171,11 +160,7 @@ def update_student_details_by_roll(rollno):
         )
         mycursor = mydb.cursor()
         mycursor.execute("USE student")
-        column_to_be_updated = input('enter the name of the column of the student_details to be updated:')
-        print(column_to_be_updated)
-        student_data_to_be_updated = input('enter the student data to be updated: ')
-        print(student_data_to_be_updated)
-        sql ="UPDATE student_details set {column_to_be_updated} ='{student_data_to_be_updated}' where student_roll_number = '{rollno}' ".format(column_to_be_updated=column_to_be_updated,student_data_to_be_updated=student_data_to_be_updated,rollno=rollno)
+        sql ="UPDATE student_details set {column_to_be_updated} ='{student_data_to_be_updated}' where student_roll_number = '{rollno}' ".format(column_to_be_updated=update_column,student_data_to_be_updated=update,rollno=rollno)
         print(sql)
         mycursor.execute(sql)
         mydb.commit()
