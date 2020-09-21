@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-import helper
+from core.logic import helper
 app: Flask = Flask(__name__)
 CORS(app)
 
@@ -11,9 +11,18 @@ def add_student_details():
     try:
         if request.method == 'POST':
             print(request)
+            student_details = request.get_json(force=True)
+            student_name = student_details['student_name']
+            print(student_name)
+            roll_no = student_details['roll_no']
+            print(roll_no)
+            dept = student_details['dept']
+            print(dept)
+            year = student_details['year']
+            print(year)
             helper.create_student_database()
             helper.create_students_details_table()
-            status = helper.register_student_details()
+            status = helper.register_student_details(student_name,roll_no,dept,year)
             return jsonify(status=status)
     except Exception as e:
         print(e)
@@ -53,7 +62,10 @@ def delete_student_details():
     try:
         if request.method == 'DELETE':
             print(request)
-            deletion_status = helper.delete_all_student_details()
+            student_roll = request.get_json(force=True)
+            delete_rollnumber = student_roll['roll_no']
+            print(delete_rollnumber)
+            deletion_status = helper.delete_all_student_details(delete_rollnumber)
             print(deletion_status)
             return jsonify(status=deletion_status)
 
@@ -70,7 +82,7 @@ def get_student_details_by_roll(rollno):
             print(rollno)
             print("roll number of the student whose details should be retrived",rollno )
             retrived_details = helper.get_student_details_by_roll(rollno)
-            return jsonify(status=retrived_details)
+            return jsonify(retrived_details)
 
     except Exception as e:
         print(e)
@@ -82,7 +94,10 @@ def update_student_details_by_roll(rollno):
             print(request)
             print(rollno)
             print("roll number of the student whose details has to be updates",rollno )
-            updation_status = helper.update_student_details_by_roll(rollno)
+            update_student = request.get_json(force=True)
+            update_column = update_student['column_to_be_updated']
+            update = update_student['update']
+            updation_status = helper.update_student_details_by_roll(rollno,update_column,update)
             return jsonify(status=updation_status)
     except Exception as e:
         print(e)
@@ -96,6 +111,7 @@ def delete_student_details_by_roll(rollno):
             print(request)
             print(rollno)
             print("roll number of the student whose details has to be deleted",rollno)
+
             deletion_status=helper.delete_student_details_by_roll(rollno)
             return jsonify(status=deletion_status)
     except Exception as e:
