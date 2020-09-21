@@ -3,9 +3,9 @@ from mysql.connector import Error
 
 try:
     mydb = mysql.connector.connect(
-        host='localhost',
+        host='mysql',
         user='root',
-        passwd=''
+        passwd='mypassword'
         )
 
 except Error as e:
@@ -40,9 +40,9 @@ def create_student_database():
 def create_students_details_table():
     try:
         mydb = mysql.connector.connect(
-            host="localhost",
+            host="mysql",
             user="root",
-            passwd=""
+            passwd="mypassword"
         )
 
         mycursor = mydb.cursor()
@@ -82,9 +82,9 @@ def register_student_details():
         print(year)
 
         mydb = mysql.connector.connect(
-            host='localhost',
+            host='mysql',
             user='root',
-            passwd= ''
+            passwd= 'mypassword'
             )
         mycursor = mydb.cursor()
         mycursor.execute('USE student')
@@ -102,9 +102,9 @@ def register_student_details():
 def get_all_student_details():
     try:
         mydb = mysql.connector.connect(
-            host='localhost',
+            host='mysql',
             user='root',
-            passwd=''
+            passwd='mypassword'
 
         )
         mycursor=mydb.cursor()
@@ -121,9 +121,9 @@ def get_all_student_details():
 def delete_all_student_details():
     try:
         mydb=mysql.connector.connect(
-            host='localhost',
+            host='mysql',
             user='root',
-            passwd=''
+            passwd='mypassword'
             )
         mycursor=mydb.cursor()
         mycursor.execute("USE student")
@@ -143,9 +143,9 @@ def delete_all_student_details():
 def get_student_details_by_roll(rollno):
     try:
         mydb = mysql.connector.connect(
-            host='localhost',
+            host='mysql',
             user='root',
-            passwd=''
+            passwd='mypassword'
         )
         mycursor = mydb.cursor()
         mycursor.execute("USE student")
@@ -163,9 +163,9 @@ def get_student_details_by_roll(rollno):
 def update_student_details_by_roll(rollno):
     try:
         mydb = mysql.connector.connect(
-            host='localhost',
+            host='mysql',
             user='root',
-            passwd=''
+            passwd='mypassword'
         )
         mycursor = mydb.cursor()
         mycursor.execute("USE student")
@@ -188,9 +188,9 @@ def update_student_details_by_roll(rollno):
 def delete_student_details_by_roll(rollno):
     try:
         mydb = mysql.connector.connect(
-            host='localhost',
+            host='mysql',
             user='root',
-            passwd=''
+            passwd='mypassword'
         )
         mycursor = mydb.cursor()
         mycursor.execute("USE student")
