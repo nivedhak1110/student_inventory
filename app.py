@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from core.logic import helper
+import helper
 app: Flask = Flask(__name__)
 CORS(app)
 
