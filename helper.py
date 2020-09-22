@@ -77,6 +77,7 @@ def register_student_details(student_name,roll_no,dept,year):
             user='root',
             passwd='mypassword'
             )
+        print("inside register_student_details")
         mycursor = mydb.cursor()
         mycursor.execute('USE student')
         sql = "INSERT into student_details values(%s,%s,%s,%s)"
