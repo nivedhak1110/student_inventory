@@ -23,6 +23,7 @@ def add_student_details():
             helper.create_student_database()
             helper.create_students_details_table()
             status = helper.register_student_details(student_name,roll_no,dept,year)
+            print(status)
             return jsonify(status=status)
     except Exception as e:
         print(e)
