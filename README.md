@@ -1,6 +1,9 @@
 # student_inventory
-API application
+student API application(CRUD operations)
 backend:python
+
 framework:Flask
+
 rest-client-tool:POSTMAN
+
 database:MYSQL
