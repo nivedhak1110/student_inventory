@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "9c8963a0-78ad-4ac5-aebe-e951d2347f52",
+		"name": "students",
+		"description": "Student inventory",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:5000/add_student_details",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"student_name\": \"maan\",\n\"roll_no\": \"12307\",\n\"dept\": \"cse\",\n\"year\":\"3rdyear\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/add_student_details",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"add_student_details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/get_all_student_details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/get_all_student_details",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"get_all_student_details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/get_student_details/12304",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/update_student_details/12304",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"column_to_be_updated\": \"dept\",\n\"update\": \"IT\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/update_student_details/12307",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"update_student_details",
+						"12307"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/delete_student_details/12309",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/delete_student_details/12307",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"delete_student_details",
+						"12307"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
